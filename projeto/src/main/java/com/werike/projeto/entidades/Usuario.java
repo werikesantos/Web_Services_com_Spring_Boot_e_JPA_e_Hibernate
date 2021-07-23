@@ -3,9 +3,20 @@ package com.werike.projeto.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//CONFIGURANDO A MINHA ENTIDADE COM ANNOTETION DO JPA(ESSA ANOTAÇÃO SERVE PARA O JPA CONVERTER OS OBJETOS PARA O MODELO RELACIONAL)
+//import javax.persistence.Entity; => TEM QUE SER ADICIONADO ESSE DA ESPECIFICAÇÃO
+@Entity
 public class Usuario implements Serializable{//Serializable => SERVE PARA O OBJETO TRAFEGE NA REDE E POSSA SER GRAVADO EM ARQUIVOS
 	private static final long serialVersionUID = 1L; //É UM NÚMERO DE SERIE PADRÃO
 	
+	//PROXIMO PASSO É DIZER PARA O JPA QUAL É A MINHA CHAVE PRIMARIA DO BANCO DE DADOS
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //ESSA ANOTAÇÃO INDICA QUE ESSA CHAVE PRIMARIA É AUTO INCREMENT
 	private Long id;
 	private String name;
 	private String email;
