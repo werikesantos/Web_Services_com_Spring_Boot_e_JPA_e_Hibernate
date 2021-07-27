@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "pedido") //@Table(name = "pedido") => NOMEANDO A TABELA
 public class Pedido implements Serializable {
@@ -19,7 +21,9 @@ public class Pedido implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id;	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "GMT") //FORMATANDO O FORMATO DA DATA
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant instante; //CLASSE INSTANTE PRECUSSORA DA CLASSE DATE
 	
 	//FAZENDO A ASSOCIAÇÃO DAS CLASSES USUARIO E PEDIDO
